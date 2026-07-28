@@ -35,6 +35,26 @@ window.onerror = killErrors;
 
     <link href="css/jdzcss.css" rel="stylesheet" /><link href="images/DefaultSkin.css" rel="stylesheet" type="text/css" />
     <link rel="icon" href="favicon.png" type="image/png" />
+    <script>
+    (function () {
+      const artUrl = 'asicc.txt';
+      fetch(artUrl, { cache: 'no-store' })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Unable to load ' + artUrl);
+          }
+          return response.text();
+        })
+        .then(function (text) {
+          const art = (text || '').trim();
+          if (!art) return;
+          console.log('%c' + art, 'font-family: Consolas, Monaco, monospace; white-space: pre; color: #4caf50;');
+        })
+        .catch(function (error) {
+          console.warn('Failed to load asicc art:', error);
+        });
+    })();
+    </script>
 </head>
 <body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="images/bg_all.jpg">
     <form name="form1" method="post" action="index.aspx" id="form1">
