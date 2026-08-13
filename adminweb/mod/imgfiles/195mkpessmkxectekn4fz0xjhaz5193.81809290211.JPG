@@ -2966,7 +2966,7 @@ if (window!=window.top) {
       <div id="positionHome">
 	<div id="searchHome">
 	  <form name="form1" method="get" action="/web/submit">
-	    <input class="form-control" type="text" name="url" value="https://jdzch18.hanze.icu/adminweb/mod/imgfiles/195mkpessmkxectekn4fz0xjhaz5193.81809290211.JPG" size="40" onfocus="javascript:this.focus();this.select();" >
+	    <input class="form-control" type="text" name="url" value="https://old.jdzch18.com/adminweb/mod/imgfiles/195mkpessmkxectekn4fz0xjhaz5193.81809290211.JPG" size="40" onfocus="javascript:this.focus();this.select();" >
 	    <button class="btn btn-default" type="submit" name="type" value="replay">Latest</button>
 	    <button class="btn btn-default" type="submit" name="type" value="urlquery">Show All</button>
 	  </form>
@@ -2975,7 +2975,7 @@ if (window!=window.top) {
 <h2>Hrm.</h2>
 <p>The Wayback Machine has not archived that URL.</p>
     <p>Click here to search for all archived pages under
-      <a href="https://web.archive.org/web/*/https://jdzch18.hanze.icu/adminweb/mod/imgfiles/*">https://jdzch18.hanze.icu/adminweb/mod/imgfiles/</a>.
+      <a href="https://web.archive.org/web/*/https://old.jdzch18.com/adminweb/mod/imgfiles/*">https://old.jdzch18.com/adminweb/mod/imgfiles/</a>.
     </p>
 </div>
       </div>
