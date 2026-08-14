@@ -1,4 +1,4 @@
-
+﻿
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -56,45 +56,72 @@
 
 <!-- Rewrite .aspx links at runtime to point to web-archive redirect -->
 <script>
-(function(){
+(() => {
   const redirectBase = './redirect.html?url=';
   const archiveBase = 'https://web.archive.org/web/20180818205419/http://jdzch18.com/';
-  function shouldRewrite(val){
-    return typeof val === 'string' && val.indexOf('.aspx') !== -1 && !val.startsWith(redirectBase);
-  }
-  function rewriteAttr(el, attr){
-    try{
-      const v = el.getAttribute(attr);
-      if(!shouldRewrite(v)) return;
-      let orig = v || '';
-      if(orig.startsWith('/')) orig = orig.slice(1);
-      let target;
-      if(/^https?:\/\//i.test(orig)){
-        // absolute URL: if it's already pointing to jdzch18.com, archive the path; otherwise use as-is
-        if(orig.match(/https?:\/\/([^/]*\.)?jdzch18\.com/i)){
-          const path = orig.replace(/^https?:\/\/[^^/]+\//i, '');
-          target = archiveBase + path;
-        }else{
-          target = orig;
-        }
-      }else{
-        target = archiveBase + orig;
+
+  const shouldRewrite = (value) => typeof value === 'string' && value.includes('.aspx') && !value.startsWith(redirectBase);
+
+  const rewriteValue = (rawValue) => {
+    if (!shouldRewrite(rawValue)) return null;
+
+    const value = rawValue.trim();
+    const normalized = value.startsWith('/') ? value.slice(1) : value;
+
+    try {
+      const url = new URL(normalized, window.location.href);
+      const hostIsSchool = /^([^.]+\.)?jdzch18\.com$/i.test(url.hostname);
+
+      if (hostIsSchool) {
+        const path = `${url.pathname.replace(/^\/+/, '')}${url.search}${url.hash}`;
+        return `${archiveBase}${path}`;
       }
-      el.setAttribute(attr, redirectBase + encodeURIComponent(target));
-    }catch(e){/* ignore */}
-  }
-  function runOnce(){
-    document.querySelectorAll('[href],[action],[src]').forEach(el=>{
-      if(el.hasAttribute('href')) rewriteAttr(el,'href');
-      if(el.hasAttribute('action')) rewriteAttr(el,'action');
-      if(el.hasAttribute('src')) rewriteAttr(el,'src');
+
+      if (/^https?:\/\//i.test(normalized)) {
+        return normalized;
+      }
+
+      return `${archiveBase}${normalized.replace(/^\/+/, '')}`;
+    } catch (error) {
+      return `${archiveBase}${normalized.replace(/^\/+/, '')}`;
+    }
+  };
+
+  const rewriteAttribute = (element, attributeName) => {
+    const value = element.getAttribute(attributeName);
+    const target = rewriteValue(value);
+    if (!target) return;
+    element.setAttribute(attributeName, `${redirectBase}${encodeURIComponent(target)}`);
+  };
+
+  const runOnce = () => {
+    document.querySelectorAll('[href], [action], [src]').forEach((element) => {
+      if (element.hasAttribute('href')) rewriteAttribute(element, 'href');
+      if (element.hasAttribute('action')) rewriteAttribute(element, 'action');
+      if (element.hasAttribute('src')) rewriteAttribute(element, 'src');
     });
-  }
-  document.addEventListener('DOMContentLoaded', ()=>{
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
     runOnce();
-    let tries = 0; const t = setInterval(()=>{ runOnce(); if(++tries>6) clearInterval(t); },200);
-    const mo = new MutationObserver(runOnce);
-    if(document.body) mo.observe(document.body,{childList:true,subtree:true,attributes:true});
+
+    let attempts = 0;
+    const intervalId = window.setInterval(() => {
+      runOnce();
+      attempts += 1;
+      if (attempts > 6) {
+        window.clearInterval(intervalId);
+      }
+    }, 200);
+
+    if (document.body) {
+      const observer = new MutationObserver(runOnce);
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true,
+        attributes: true,
+      });
+    }
   });
 })();
 </script>
