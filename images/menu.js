@@ -1,46 +1,43 @@
-//ÏÂÀ­²Ëµ¥Ïà¹Ø´úÂë
- var h;
- var w;
- var l;
- var t;
- var topMar = 1;
- var leftMar = -2;
- var space = 1;
- var isvisible;
- var MENU_SHADOW_COLOR='#999999';//¶¨ÒåÏÂÀ­²Ëµ¥ÒõÓ°É«
- var global = window.document
- global.fo_currentMenu = null
- global.fo_shadows = new Array
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
+var h;
+var w;
+var l;
+var t;
+var topMar = 1;
+var leftMar = -2;
+var space = 1;
+var isvisible;
+var MENU_SHADOW_COLOR = '#999999';//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½Ó°É«
+var global = window.document
+global.fo_currentMenu = null
+global.fo_shadows = new Array
 
-function HideMenu() 
-{
- var mX;
- var mY;
- var vDiv;
- var mDiv;
-	if (isvisible == true)
-{
+function HideMenu() {
+	var mX;
+	var mY;
+	var vDiv;
+	var mDiv;
+	if (isvisible == true) {
 		vDiv = document.all("menuDiv");
 		mX = window.event.clientX + document.body.scrollLeft;
 		mY = window.event.clientY + document.body.scrollTop;
-		if ((mX < parseInt(vDiv.style.left)) || (mX > parseInt(vDiv.style.left)+vDiv.offsetWidth) || (mY < parseInt(vDiv.style.top)-h) || (mY > parseInt(vDiv.style.top)+vDiv.offsetHeight)){
+		if ((mX < parseInt(vDiv.style.left)) || (mX > parseInt(vDiv.style.left) + vDiv.offsetWidth) || (mY < parseInt(vDiv.style.top) - h) || (mY > parseInt(vDiv.style.top) + vDiv.offsetHeight)) {
 			vDiv.style.visibility = "hidden";
 			isvisible = false;
 		}
-}
+	}
 }
 
-function ShowMenu(vMnuCode,tWidth) {
+function ShowMenu(vMnuCode, tWidth) {
 	vSrc = window.event.srcElement;
-	vMnuCode = "<table id='submenu' cellspacing=1 cellpadding=3 style='width:"+tWidth+"' class=menu onmouseout='HideMenu()'><tr height=23><td nowrap align=left class=MenuBody>" + vMnuCode + "</td></tr></table>";
+	vMnuCode = "<table id='submenu' cellspacing=1 cellpadding=3 style='width:" + tWidth + "' class=menu onmouseout='HideMenu()'><tr height=23><td nowrap align=left class=MenuBody>" + vMnuCode + "</td></tr></table>";
 
 	h = vSrc.offsetHeight;
 	w = vSrc.offsetWidth;
-	l = vSrc.offsetLeft + leftMar+4;
-	t = vSrc.offsetTop + topMar + h + space-2;
+	l = vSrc.offsetLeft + leftMar + 4;
+	t = vSrc.offsetTop + topMar + h + space - 2;
 	vParent = vSrc.offsetParent;
-	while (vParent.tagName.toUpperCase() != "BODY")
-	{
+	while (vParent.tagName.toUpperCase() != "BODY") {
 		l += vParent.offsetLeft;
 		t += vParent.offsetTop;
 		vParent = vParent.offsetParent;
@@ -51,14 +48,12 @@ function ShowMenu(vMnuCode,tWidth) {
 	menuDiv.style.left = l;
 	menuDiv.style.visibility = "visible";
 	isvisible = true;
-    makeRectangularDropShadow(submenu, MENU_SHADOW_COLOR, 4)
+	makeRectangularDropShadow(submenu, MENU_SHADOW_COLOR, 4)
 }
 
-function makeRectangularDropShadow(el, color, size)
-{
+function makeRectangularDropShadow(el, color, size) {
 	var i;
-	for (i=size; i>0; i--)
-	{
+	for (i = size; i > 0; i--) {
 		var rect = document.createElement('div');
 		var rs = rect.style
 		rs.position = 'absolute';
