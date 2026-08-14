@@ -1,42 +1,55 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" >
-<head><title>
-	景德镇昌河中学 
-</title><meta content="景德镇昌河中学|" name="keywords"><meta content="景德镇昌河中学 " name="description"><meta content="MSHTML 6.00.6000.16481" name="GENERATOR">
-   <SCRIPT SCRIPT src="images/prototype.js"></SCRIPT>
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="景德镇市昌河中学">
+  <meta name="description" content="景德镇市昌河中学">
+  <title>景德镇昌河中学</title>
 
-<SCRIPT src="images/scriptaculous.js"></SCRIPT>
-<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-<script>
+  <script defer src="images/prototype.js"></script>
+  <script defer src="images/scriptaculous.js"></script>
+  <script defer src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+  <script>
     window.RufflePlayer = {
       config: {
         autoplay: "on",
         unmuteOverlay: "hidden",
       }
     };
-</script>
-<SCRIPT src="images/checklogin.js"></SCRIPT>
-<STYLE type=text/css>.style4 {
-	COLOR: #ffffff
-}
-</STYLE>
-   
-<SCRIPT language=JavaScript src="images/menu.js" 
-type=text/JavaScript></SCRIPT>
-<SCRIPT language=javascript> 
-<!-- Hide 
-function killErrors() { 
-return true; 
-} 
-window.onerror = killErrors; 
-// --> 
-</SCRIPT>
+  </script>
+  <script defer src="images/checklogin.js"></script>
+  <script defer src="images/menu.js"></script>
+  <script>
+    (() => {
+      const originalOnError = window.onerror;
+      window.onerror = function wrappedOnError(message, source, lineno, colno, error) {
+        if (typeof originalOnError === 'function') {
+          return originalOnError.call(this, message, source, lineno, colno, error);
+        }
+        return true;
+      };
+    })();
+  </script>
 
-    <link href="css/jdzcss.css" rel="stylesheet" /><link href="images/DefaultSkin.css" rel="stylesheet" type="text/css" />
-    <link rel="icon" href="favicon.png" type="image/png" />
+  <style>
+    .style4 {
+      color: #ffffff;
+    }
+    body {
+      background-image: url("images/bg_all.jpg");
+      background-repeat: repeat;
+      background-color: #f5f7fb;
+      margin: 0;
+    }
+  </style>
+
+  <link rel="stylesheet" href="css/jdzcss.css">
+  <link rel="stylesheet" href="images/DefaultSkin.css">
+  <link rel="icon" href="favicon.png" type="image/png">
 </head>
-<body  leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" background="images/bg_all.jpg">
+<body>
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
 <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
 <input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
