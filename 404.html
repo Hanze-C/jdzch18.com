@@ -2,16 +2,18 @@
 <HTML><HEAD><TITLE>无法找到该页</TITLE>
 <META HTTP-EQUIV="Content-Type" Content="text/html; charset=UTF-8">
 <STYLE type="text/css">
-  BODY { font: 9pt/12pt 宋体 }
+  BODY { font: 9pt/12pt 宋体; background: #ffffff; color: #000000 }
   H1 { font: 12pt/15pt 宋体 }
   H2 { font: 9pt/12pt 宋体 }
   A:link { color: red }
   A:visited { color: maroon }
+  #orig-url { word-break: break-all; color: maroon }
 </STYLE>
 </HEAD><BODY><TABLE width=500 border=0 cellspacing=10><TR><TD>
 
 <h1>无法找到该页/404 Not Found</h1>
-您访问的页面可能已经被删除、移动或者当前链接有误。
+<p>您访问的页面未被互联网档案馆存档。<br>
+访问地址: <span id="orig-url">(未提供)</span></p>
 <hr>
 <p>请尝试以下操作</p>
 <ul>
@@ -22,14 +24,28 @@
 </ul>
 <h2>HTTP 错误 404 - 文件或目录未找到</h2>
 <hr>
-<p>网站版本信息</p>
+<p>网站版本信息<br>当前版本: V4.1</p>
+<p>V4.1(2026/10/25 11:45)</p>
 <ul>
-<li>网站版本: V3.1</li>
-<li>更新时间: 202608142100</li>
+<li>1.已完成本地快照内所有页面的修复</li>
+<li>2.重写部分网页代码</li>
+</ul>
+<p>V3.1(2026/08/14 21:00)</p>
+<ul>
 <li>1.互动交流，名师工作室页面现已支持访问</li>
 <li>2.重写部分网页代码</li>
-<li>3.更新Ruffle版本</li>
 </ul>
-<p>版权所有 © 2026 <a href="mailto:jdzch18@mei.zone">星野暝Mei</a></p>
-</TD></TR></TABLE></BODY></HTML>
+<p>版权所有 © 2026 <a href="mailto:i@mei.zone">星野暝Mei</a></p>
+</TD></TR></TABLE>
+<SCRIPT type="text/javascript">
+(function () {
+  var m = /[?&]url=([^&]*)/.exec(location.search);
+  var el = document.getElementById('orig-url');
+  if (m && el) {
+    try { el.textContent = decodeURIComponent(m[1]); }
+    catch (e) { el.textContent = m[1]; }
+  }
+})();
+</SCRIPT>
+</BODY></HTML>
 
